@@ -21,8 +21,16 @@
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/calib3d.hpp"
 
+#include <iostream>
+
 class MainWindow : public QWidget
 {
+    enum WRITE_MODE : uchar
+    {
+        OVERWRITE,
+        APPEND
+    };
+
     Q_OBJECT
 private:
     QPushButton* pushButtonSolve, *pushButtonLoad, *pushButtonSlowSolve, *pushButtonPauseSolve;
@@ -34,6 +42,8 @@ private:
     QVBoxLayout* vLayoutMain;
     QDir sourceDir;
     QWidget* windowLegend;
+
+    WRITE_MODE writeMode;
 
 public:
     MainWindow(QWidget* _parent = 0);
